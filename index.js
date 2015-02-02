@@ -8,15 +8,15 @@ exports.check = function (path) {
         })
    }
    else if (toString.call(path) === '[object Array]') {
-        var files = []
+        var fileList = []
         for (var i = 0; i < path.length; i++) {
             glob(path[i], {}, function (er, files) {
-                files = files.concat(files);
+                fileList = fileList.concat(files);
             })
         }
         setTimeout(function() {
-            check(files);
-        }, 200);
+            check(fileList);
+        }, 1000);
    }  
 };
 
