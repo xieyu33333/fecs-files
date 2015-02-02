@@ -1,9 +1,9 @@
 {
   "name": "fecs-files",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "baidu front-end code check tool",
   "main": "index.js",
-  "devDependencies": {
+  "dependencies": {
     "fecs": "x",
     "glob": "x"
   },
