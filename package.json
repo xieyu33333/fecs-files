@@ -1,0 +1,19 @@
+{
+  "name": "fecs-files",
+  "version": "1.0.0",
+  "description": "baidu front-end code check tool",
+  "main": "index.js",
+  "devDependencies": {
+    "fecs": "x",
+    "glob": "x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "codeCheck",
+    "baidu"
+  ],
+  "author": "xieyu33333",
+  "license": "MIT"
+}
