@@ -14,6 +14,10 @@
     "codeCheck",
     "baidu"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:xieyu33333/fecs-files.git"
+  },
   "author": "xieyu33333",
   "license": "MIT"
 }
