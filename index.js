@@ -1,14 +1,17 @@
 var fecs = require('fecs');
 var glob = require("glob");
-var gulp = require("gulp");
-var through = require('through2');
-
-gulp.src('node_modules/fecs/cli/check.js')
-    .pipe(remove())
-    .pipe(gulp.dest('node_modules/fecs/cli/'));
-
+var fs = require('fs')
 
 exports.check = function (path) {
+
+    var checkFile = 'node_modules/fecs-files/node_modules/fecs/cli/check.js';
+
+    if (fs.existsSync(checkFile)) {
+        var originFile = fs.readFileSync(checkFile, 'utf-8');
+        var newFile = originFile.replace("process.exit(success ? 0 : 1);", "");
+        fs.writeFileSync(checkFile, newFile, 'utf-8');
+    }
+
    if (typeof(path) === 'string') {
         glob(path, {}, function (er, files) {
             check(files);
@@ -46,26 +49,6 @@ function check(files) {
     fecs.check(fecs_opts);
 }
 
-
-function remove() {
-  // Creating a stream through which each file will pass
-    return through.obj(function(file, enc, cb) {
-        if (file.isNull()) {
-          // return empty file
-            cb(null, file);
-        }
-        if (file.isBuffer()) {
-            var newString = file.contents.toString().replace("process.exit(success ? 0 : 1);", "");
-            file.contents = new Buffer(newString);
-        }
-        if (file.isStream()) {
-            file.contents = file.contents.pipe(prefixStream(prefixText));
-        }
-
-        cb(null, file);
-
-    });
-};
 // exports.format = function (opts) {
 //     var opts = opts || {};
 //     var output = opts.output || './output';
